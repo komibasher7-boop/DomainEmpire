@@ -1,0 +1,100 @@
+import os
+
+domains = [
+    {
+        "name": "riwep.com",
+        "tagline": "The Pinnacle of Intelligent Systems.",
+        "accent": "#60a5fa", # Blue glow
+        "wa_msg": "Requesting private acquisition details for RIWEP.com"
+    },
+    {
+        "name": "lytren.com",
+        "tagline": "The Future of Strategic Mobility.",
+        "accent": "#34d399", # Emerald glow
+        "wa_msg": "Requesting private acquisition details for LYTREN.com"
+    },
+    {
+        "name": "oryphonix.com",
+        "tagline": "Sovereign Security & Elite Identity.",
+        "accent": "#fbbf24", # Gold glow
+        "wa_msg": "Requesting private acquisition details for ORYPHONIX.com"
+    }
+]
+
+email = "bashradam97@gmail.com"
+phone = "33767747072"
+
+html_template = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{name} | Elite Domain Acquisition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {{ font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; color: #ffffff; }}
+        .glow-text {{ text-shadow: 0 0 30px {accent}44; }}
+        .glass-card {{ background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 40px; }}
+        .btn-luxury {{ background: #ffffff; color: #000000; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }}
+        .btn-luxury:hover {{ transform: scale(1.05); box-shadow: 0 20px 40px -10px {accent}66; }}
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+    <!-- Subtle Background Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 opacity-20 blur-[120px]" style="background: {accent}"></div>
+
+    <div class="glass-card w-full max-w-5xl p-12 md:p-24 relative overflow-hidden text-center">
+        <!-- Brand Identity -->
+        <header class="mb-16">
+            <span class="text-[10px] tracking-[0.4em] text-gray-500 uppercase mb-4 block font-bold">Premium Digital Asset</span>
+            <h1 class="text-6xl md:text-9xl font-extrabold tracking-tighter mb-6 glow-text italic">
+                {name}
+            </h1>
+            <div class="h-[1px] w-20 bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto"></div>
+        </header>
+
+        <!-- Core Message -->
+        <div class="max-w-2xl mx-auto mb-20">
+            <p class="text-2xl md:text-3xl text-gray-300 font-light leading-snug mb-4">
+                {tagline}
+            </p>
+            <p class="text-sm text-gray-500 tracking-wide uppercase">Available for Global Acquisition</p>
+        </div>
+
+        <!-- Acquisition Channels -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="https://www.afternic.com/domains/{name}/details" class="btn-luxury px-12 py-5 rounded-2xl font-extrabold text-sm tracking-widest uppercase">
+                Acquire via Afternic
+            </a>
+            <a href="https://wa.me/{phone}?text={wa_msg}" class="px-12 py-5 bg-transparent border border-white/10 rounded-2xl font-bold text-sm tracking-widest uppercase hover:bg-white/5 transition-all">
+                Private Consultation
+            </a>
+        </div>
+
+        <!-- Professional Trust Signals -->
+        <footer class="mt-24 pt-12 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8 text-[10px] tracking-[0.2em] text-gray-600 uppercase font-bold">
+            <div>Secure Escrow Transfer</div>
+            <div>Instant Brand Authority</div>
+            <div>24/7 Priority Support</div>
+        </footer>
+    </div>
+</body>
+</html>
+"""
+
+for d in domains:
+    folder = d['name'].split('.')[0]
+    os.makedirs(folder, exist_ok=True)
+    with open(f"{folder}/index.html", "w") as f:
+        page = html_template.format(
+            name=d['name'], 
+            tagline=d['tagline'],
+            accent=d['accent'], 
+            wa_msg=d['wa_msg'].replace(" ", "%20"),
+            phone=phone,
+            email=email
+        )
+        f.write(page)
+    print(f"[+] OBSIDIAN ELITE DEPLOYED: {d['name']}")

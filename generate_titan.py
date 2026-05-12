@@ -1,23 +1,55 @@
+import os
 
+domains = [
+    {
+        "name": "riwep.com",
+        "price": "$4,900",
+        "category": "Artificial Intelligence / Fintech",
+        "tagline": "The Future of Integrated Systems.",
+        "color": "#3b82f6", # Blue
+        "wa_msg": "Inquiry: Strategic Acquisition of RIWEP.com"
+    },
+    {
+        "name": "lytren.com",
+        "price": "$5,500",
+        "category": "Logistics / Next-Gen Mobility",
+        "tagline": "Redefining Global Movement.",
+        "color": "#10b981", # Emerald
+        "wa_msg": "Inquiry: Strategic Acquisition of LYTREN.com"
+    },
+    {
+        "name": "oryphonix.com",
+        "price": "$8,200",
+        "category": "Cyber Security / Aerospace",
+        "tagline": "Sovereign Communication Architecture.",
+        "color": "#f59e0b", # Amber
+        "wa_msg": "Inquiry: Strategic Acquisition of ORYPHONIX.com"
+    }
+]
+
+email = "bashradam97@gmail.com"
+phone = "33767747072"
+
+html_template = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oryphonix.com | Corporate Asset Acquisition</title>
+    <title>{name} | Corporate Asset Acquisition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
-        .hero-gradient { background: radial-gradient(circle at 50% -20%, #f59e0b15 0%, #ffffff 100%); }
-        .btn-primary { background-color: #111827; color: white; transition: all 0.3s ease; }
-        .btn-primary:hover { background-color: #f59e0b; transform: translateY(-2px); }
+        body {{ font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }}
+        .hero-gradient {{ background: radial-gradient(circle at 50% -20%, {color}15 0%, #ffffff 100%); }}
+        .btn-primary {{ background-color: #111827; color: white; transition: all 0.3s ease; }}
+        .btn-primary:hover {{ background-color: {color}; transform: translateY(-2px); }}
     </style>
 </head>
 <body class="hero-gradient min-h-screen">
     <!-- Corporate Header -->
     <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
-        <div class="text-2xl font-extrabold tracking-tighter uppercase">oryphonix.com</div>
+        <div class="text-2xl font-extrabold tracking-tighter uppercase">{name}</div>
         <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
             <span>DOMAIN ASSET</span>
             <span>SECURE TRANSFER</span>
@@ -28,21 +60,21 @@
     <!-- Hero Section -->
     <main class="max-w-7xl mx-auto px-6 pt-20 pb-32">
         <div class="max-w-3xl">
-            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-white uppercase rounded-full" style="background-color: #f59e0b">
+            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-white uppercase rounded-full" style="background-color: {color}">
                 Exclusive Asset for Sale
             </span>
             <h1 class="text-7xl md:text-8xl font-extrabold tracking-tight mb-8">
-                Own the brand <span style="color: #f59e0b">oryphonix.com</span>
+                Own the brand <span style="color: {color}">{name}</span>
             </h1>
             <p class="text-2xl text-gray-600 mb-12 leading-relaxed">
-                Sovereign Communication Architecture. Secure this premium .com identity to establish instant authority in the <strong>Cyber Security / Aerospace</strong> sector.
+                {tagline} Secure this premium .com identity to establish instant authority in the <strong>{category}</strong> sector.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="https://www.afternic.com/domains/oryphonix.com/details" class="btn-primary px-8 py-4 rounded-xl font-bold text-center text-lg shadow-xl shadow-gray-200">
+                <a href="https://www.afternic.com/domains/{name}/details" class="btn-primary px-8 py-4 rounded-xl font-bold text-center text-lg shadow-xl shadow-gray-200">
                     Acquire via Afternic
                 </a>
-                <a href="https://wa.me/33767747072?text=Inquiry:%20Strategic%20Acquisition%20of%20ORYPHONIX.com" class="px-8 py-4 bg-white border border-gray-200 rounded-xl font-bold text-center text-lg hover:bg-gray-50 transition-all">
+                <a href="https://wa.me/{phone}?text={wa_msg}" class="px-8 py-4 bg-white border border-gray-200 rounded-xl font-bold text-center text-lg hover:bg-gray-50 transition-all">
                     Contact Agent
                 </a>
             </div>
@@ -52,7 +84,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-32 border-t border-gray-100 pt-20">
             <div>
                 <h3 class="text-lg font-bold mb-4 italic">High Recall Value</h3>
-                <p class="text-gray-500 leading-relaxed">Scientific research proves that short, rhythmic names like <strong>oryphonix.com</strong> are 40% easier to remember for global consumers.</p>
+                <p class="text-gray-500 leading-relaxed">Scientific research proves that short, rhythmic names like <strong>{name}</strong> are 40% easier to remember for global consumers.</p>
             </div>
             <div>
                 <h3 class="text-lg font-bold mb-4 italic">SEO Supremacy</h3>
@@ -71,7 +103,7 @@
                 <p class="text-lg text-gray-500">Includes secure escrow transfer and 24/7 support.</p>
             </div>
             <div class="text-6xl font-black mt-8 md:mt-0 tracking-tighter">
-                $8,200
+                {price}
             </div>
         </div>
     </main>
@@ -81,10 +113,28 @@
         <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-xs font-bold tracking-widest uppercase">
             <p>© 2026 Sovereign Domain Assets . Managed by Bashar Adam</p>
             <div class="mt-4 md:mt-0 space-x-6">
-                <a href="mailto:bashradam97@gmail.com" class="hover:text-black">Official Inquiry</a>
+                <a href="mailto:{email}" class="hover:text-black">Official Inquiry</a>
                 <span>Privacy Guaranteed</span>
             </div>
         </div>
     </footer>
 </body>
 </html>
+"""
+
+for d in domains:
+    folder = d['name'].split('.')[0]
+    os.makedirs(folder, exist_ok=True)
+    with open(f"{folder}/index.html", "w") as f:
+        page = html_template.format(
+            name=d['name'], 
+            price=d['price'], 
+            category=d['category'],
+            tagline=d['tagline'],
+            color=d['color'], 
+            wa_msg=d['wa_msg'].replace(" ", "%20"),
+            phone=phone,
+            email=email
+        )
+        f.write(page)
+    print(f"[+] TITAN SYSTEM DEPLOYED: {d['name']}")
